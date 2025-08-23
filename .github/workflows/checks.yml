@@ -1,3 +1,4 @@
+---
 name: Checks
 
 on: [push]
@@ -5,7 +6,8 @@ on: [push]
 jobs:
     test-lint:
         name: Test and Lint
-        runs-on: ubuntu-20.04
+        # runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
         steps:
             # This helps to pull the docker image from Docker Hub
             - name: Login to Docker Hub
