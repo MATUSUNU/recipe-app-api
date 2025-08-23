@@ -1,0 +1,62 @@
+
+# THIS PROJECT INCLUDES
+- APP DESIGN
+- SYSTEM-SETUP
+- PROJECT SETUP
+- GITHUB ACTION
+- TDD WITH DJANGO
+- DATABASE
+- USER MODEL
+- ADMIN
+- API
+- DEPLOY TO AWS
+
+
+=> app/ :- Django Project
+=> app/core/ :- shared between multiple apps
+=> app/user/ :- User related code
+=> app/recipe/ :- Recipe(like Target Project) related
+
+## Unit Tests
+### - CODES WHICH TESTS CODES
+### THE FLOW
+- WRITE CODE -> WRITE TEST
+
+### TDD
+### - TEST WHICH DRIVENS CODES
+### THE FLOW
+- WRITE TEST -> WRITE CODE
+### THE FULL FLOW
+- WRITE TEST -> RUN TEST(fail) -> ADD FEATURE -> RUN TEST(pass) -> REFACTOR -> RUN TEST(pass)
+
+## WE NEED INSTALLED:
+- VS CODE
+- DOCKER
+- GIT
+
+
+(1) CONFIGURE GITHUB ACC REPO & DOCKERHUB ACCOUNT
+(2) AUTHENTICATION BETWEEN GITHUB & DOCKERHUB USING TOKEN
+(3) WORKING ON PROJECT BY DOCKERIZED
+TEST &
+(4) USE DOCKER COMPOSE
+
+## LINTING
+- TOOLS TO CHECK CODE FORMATING
+- HIGHLIGHTS ERRORS, TYPOS, FORMATTING ISSUES.
+## HOW?
+(1) INSTALL `flake8` pkg
+(2) RUN IT THROUGH DOCKER COMPOSE
+`docker compsoe run --rm <the-app-name> sh -c "flake8"`
+
+## Testing
+- Django test suite
+- Setup tests per Django app
+- Run tests through Docker compose
+`docker compose run --rm <app name> sh -c "python manage.py test"`
+
+
+## Creating the "project" folder inside the app    BY RUNNING THE SHELL CMD INSIDE CONTAINER TERMINAL
+`docker compose run --rm <app name> sh -c "django-admin startproject app ."`
+- the project app will be created under the app folder in this case! why? because we are RUNNING INSIDE THE "app"
+`sudo docker compose run --rm app sh -c "django-admin startproject app ."`

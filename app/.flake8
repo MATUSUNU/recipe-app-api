@@ -1,0 +1,8 @@
+
+[flake8]
+; EXCLUDES THIS FILES FROM LINTING
+exclude = 
+    migrations,
+    __pycache__,
+    manage.py,
+    settings.py

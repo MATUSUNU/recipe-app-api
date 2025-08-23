@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      # this helps to reflect changes in the code(running in the container) without rebuilding the image
+      - ./app:/app
+    # if we didn't specify the command, it would run the default command from the Dockerfile
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"

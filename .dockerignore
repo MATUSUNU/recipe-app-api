@@ -1,0 +1,17 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.docker
+
+# Python
+## It may have properties from that specific operating system from which it created
+app/__pycache__/
+app/*/__pycache__/
+## the docker is not capable of execluding nested directories so we need to specify them all
+app/*/*/__pycache__/
+app/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
