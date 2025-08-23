@@ -1,0 +1,23 @@
+---
+name: Checks
+
+on: [push]
+
+jobs:
+    test-lint:
+        name: Test and Lint
+        runs-on: ubuntu-20.04
+        steps:
+            # This helps to pull the docker image from Docker Hub
+            - name: Login to Docker Hub
+              uses: docker/login-action@v1
+              # This "with" keyword helps to provide inputs to the specified action
+              with:
+                username: ${{ secrets.DOCKERHUB_USER }}
+                password: ${{ secrets.DOCKERHUB_TOKEN }}
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Test
+              run: docker compose run --rm app sh -c "python manage.py test"
+            - name: Lint
+              run: docker compose run --rm app sh -c "flake8"
