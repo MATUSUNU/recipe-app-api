@@ -60,3 +60,99 @@ TEST &
 `docker compose run --rm <app name> sh -c "django-admin startproject app ."`
 - the project app will be created under the app folder in this case! why? because we are RUNNING INSIDE THE "app"
 `sudo docker compose run --rm app sh -c "django-admin startproject app ."`
+
+
+## DJANGO TEST FRAMEWORK
+- BASED ON THE "unittest" library
+- DJANGO ADDS FEATURES
+    - TEST CLIENT - DUMMY WEB BROWSER
+    - SIMULATE AUTHENTICATION
+    - TEMPORARY DATABASE
+- DJANGO REST FRAMEWORK ADDS FEATURES
+    - API TEST CLIENT
+
+## TWO FORMATS
+- USE EITHER test.py or test/    YOU CAN'T USE BOTH INSIDE ONE APP
+
+## TEST CLASSES PROVIDED BY THE DJANGO
+- SimpleTestCase
+    - No database integration
+    - Useful if no database is required for your test
+    - Save time executing tests
+- TestCase
+    - Database integration
+    - USEFUL FOR TESTING CODE THAT USES THE DATABASE
+
+
+## WRITING TESTS
+- IMPORT TEST CLASS
+    - SimpleTestCase - NO DATABASE
+    - TestCase - DATABASE
+- IMPORT OBJECTS TO TEST
+- DEFINE TEST CLASS
+- ADD TEST METHOD
+- SETUP INPUTS
+- EXECUTE CODE TO BE TESTED
+- CHECK OUTPUT
+
+
+## WHAT IS MOCKING?
+- OVERRIDE OR CHANGE BEHAVIOUR OF DEPENDENCIES
+- AVOID UNINTENDED SIDE EFFECTS
+- ISOLATE CODE BEING TESTED
+
+## WHY USE MOCKING?
+- AVOID RELYING ON EXTERNAL SERVICES
+    - CAN'T GUARANTEE THEY WILL BE AVAILABLE
+    - MAKES TESTS UNPREDICTABLE AND INCONSISTENT
+- E.G. SENDING EMAIL
+
+## HOW TO USE MOCK CODE?
+- USE unittest.mock
+    - MagicMock/Mock - Replace real objects
+    - patch - Overrides codes for tests
+
+## DJANGO REST FRAMEWORK APICLIENT
+- BASED ON THE DJANGO'S TESTCLIENT
+- MAKE REQUESTS
+- CHECK RESULTS
+- OVERRIDE AUTHENTICATION
+
+
+## STEPS FOR CONFIGURING DATABASE
+- CONFIGURE DJANGO
+    - TELL DJANGO HOW TO CONNECT
+- INSTALL DATABASE ADAPTOR DEPENDENCIES
+    - INSTALL THE TOOL DJANGO USES TO CONNECT
+- UPDATE PYTHON REQUIREMENTS
+
+## INSTALL POSTGRESQL PSYCONPG2(python adopter) INSTALLATION OPTIONS
+- psycopg2-binary
+    - ok for development
+    - not good for production
+- psycopg2
+    - compiles from source
+    - required additional dependencies
+    - easy to install with DOCKER
+
+## INSTALLING PSYCOPG2
+- LIST OF PACKAGE DEPENDENCIES IN DOCS
+    - C COMPILER
+    - PYTHON3-DEV
+    - LIBPQ-DEV
+- EQUIVALENT PACKAGES FOR ALPINE
+    - POSTGRESQL-CLIENT [this guy is really required]
+    - BUILD-BASE
+    - POSTGRESQL-DEV
+    - MUSL-DEV
+- FOUND BY SEARCHING AND TRIAL AND ERROR
+- DOCKER BEST PRACTICE:
+    - CLEAN UP BUILD DEPENDENCIES
+
+
+## SOLUTION FOR THE DJANGO STARTING FIRST AND CRASHING CUZ OF UNABLE TO CONNECT WITH POSTGRESQL    [THIS CAN BE CALLED  FIXING RACE CONDITION]
+- MAKE DJANGO "WAIT FOR DB"
+- CONTINUE WHEN DATABASE READY
+
+CMD:
+`docker compose rn --rm app sh -c "python manage.py startapp core"`
