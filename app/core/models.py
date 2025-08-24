@@ -13,14 +13,16 @@ class UserManager(BaseUserManager):
     """Manager for users."""
 
     # PROVIDE KEYWORD ARGUMENT "**extra_field" WHICH
-    # REALLY HELPS US TO CREATE NEW OTHER FIELDS  so not required to list as argument!
+    # REALLY HELPS US TO CREATE NEW OTHER FIELDS
+    # so not required to list as argument!
     def create_user(self, email, password=None, **extra_fields):
         """Create, save and return a new user."""
         if not email:
             raise ValueError('User must have an email address.')
         user = self.model(email=self.normalize_email(email), **extra_fields)
         user.set_password(password)
-        user.save(using=self._db) # THIS ENABLES US TO ADDING MULTIPLE DATABASES
+        # THIS ENABLES US TO ADDING MULTIPLE DATABASES
+        user.save(using=self._db)
 
         return user
 
@@ -33,6 +35,7 @@ class UserManager(BaseUserManager):
 
         return user
 
+
 # FUNCTIONALITY FOR THE AUTHENTICATION SYSTEM = 'AbstractBaseUser'
 # FUNCTIONALITY FOR THE PERMISSIONS & FIELDS = 'PermissionsMixin'
 class User(AbstractBaseUser, PermissionsMixin):
@@ -42,6 +45,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    objects = UserManager() # ASSIGNING USER TO USERMANAGER
+    objects = UserManager()  # ASSIGNING USER TO USERMANAGER
 
     USERNAME_FIELD = 'email'

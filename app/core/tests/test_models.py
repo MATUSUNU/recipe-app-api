@@ -2,8 +2,11 @@
 Tests for models.
 """
 from django.test import TestCase
-# WHENEVER WE WANTED TO UPDATE THE CUSTOM USER MODEL "get_user_model" make it happen
-from django.contrib.auth import get_user_model # THIS IS HELPFUL FUNCTION INORDER TO GET PREFERENCE TO THE DJANGO CUSTOM MODEL
+# WHENEVER WE WANTED TO UPDATE THE CUSTOM USER MODEL
+# "get_user_model" make it happen
+# THIS IS HELPFUL FUNCTION INORDER TO GET PREFERENCE TO THE DJANGO CUSTOM MODEL
+from django.contrib.auth import get_user_model
+
 
 class ModelTests(TestCase):
     """Test models."""
@@ -19,7 +22,8 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(user.email, email)
-        self.assertTrue(user.check_password(password)) # TO CHECK THE PASSWORD IS HASHED OR NOT
+        # TO CHECK THE PASSWORD IS HASHED OR NOT
+        self.assertTrue(user.check_password(password))
 
     def test_new_user_email_normalized(self):
         """Test email is normalized for new users."""
@@ -45,5 +49,5 @@ class ModelTests(TestCase):
             'test123',
         )
 
-        self.assertTrue(user.is_superuser) # THIS IS BY HELP OF Permissionmixn
+        self.assertTrue(user.is_superuser)  # THIS IS BY HELP OF Permissionmixn
         self.assertTrue(user.is_staff)
