@@ -158,3 +158,28 @@ CMD:
 `docker compose rn --rm app sh -c "python manage.py startapp core"`
 `docker compose run --rm app sh -c "python manage.py wait_for_db && flake8"`
 `docker compose run --rm app sh -c "python manage.py test && flake8"`
+
+## DJANGO USER MODEL
+- FOUNDATION OF THE DJANGO AUTH SYSTEM
+- DEFAULT USER MODEL
+    - USERNAME INSTEAD OF EMAIL
+    - NOT EASY TO CUSTOMIZE
+- CREATE A CUSTOM MODEL FOR NEW PROJECTS
+    - ALLOWS FOR USING "EMAIL" INSTEAD  OF USERNAME
+    - FUTURE PROOF PROJECT FOR LATER CHANGES TO USER MODEL
+
+## HOW TO CUSTOMIZE USER MODEL
+- CREATE MODEL
+    - BASE FROM "AbstractBaseUser" and "PermissionMixin"
+- CREATE CUSTOM MANAGER
+    - USED FOR CLI INTEGRATION
+- SET "AUTH_USER_MODEL" IN settings.py
+
+## COMMON ISSUES
+- RUNNING MIGRATIONS BEFORE SETTING CUSTOM MODEL
+
+## USER FIELDS
+- email (EmailField)
+- name (CharField)
+- is_active (BooleanField)
+- is_staff (BooleanField)
