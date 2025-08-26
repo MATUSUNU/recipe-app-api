@@ -183,3 +183,7 @@ CMD:
 - name (CharField)
 - is_active (BooleanField)
 - is_staff (BooleanField)
+
+## CUSTOMISING THE DJANGO ADMIN
+- CREATE CLASS BASED OFF ModelAdmin or UserAdmin
+- OVERRIDE/SET CLASS VARIABLES
