@@ -89,7 +89,7 @@ class PublicUserApiTests(TestCase):
     # USER WITH INCORRECT PWD
     def test_create_token_bad_credentials(self):
         """Test returns error if credentials invalid."""
-        create_user(email='test@example.com', password= 'goodpass')
+        create_user(email='test@example.com', password='goodpass')
 
         payload = {'email': 'test@example.com', 'password': 'badpass'}
         res = self.client.post(TOKEN_URL, payload)

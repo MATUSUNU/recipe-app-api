@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # schema file which describes the api
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
-    # this serves the swagger documentation AND USE SCHEMA TO GENERATE THE GRAPHICAL USER INTERFACE FOR OUR API
+    # this serves the swagger documentation AND
+    # USE SCHEMA TO GENERATE THE GRAPHICAL USER INTERFACE FOR OUR API
     path(
         'api/docs/',
         SpectacularSwaggerView.as_view(url_name='api-schema'),
