@@ -187,3 +187,30 @@ CMD:
 ## CUSTOMISING THE DJANGO ADMIN
 - CREATE CLASS BASED OFF ModelAdmin or UserAdmin
 - OVERRIDE/SET CLASS VARIABLES
+
+## DOCS IN DRF
+- AUTO GENERATE DOCS (WITH THIRD PARTY LIBRARY)
+    - drf-spectacular
+
+## HOW IT WORKS
+1. Generate "schema" file
+2. Parse schema into GUI
+
+## OpenAPI Schema
+- standard for describing APIs
+- Popular in industry
+- Supported by most API documentation tools    like: Swagger
+
+## Using a Schema
+- Download and run in local Swagger instance
+- Serve Swagger With API    [BEST]
+
+## TYPES OF AUTHENTICATION
+- BASIC
+    - SEND USERNAME AND PASSWORD WITH EACH REQUEST
+- TOKEN
+    - USE A TOKEN IN THE "HTTP" HEADER
+- JSON WEB TOKEN (JWT)
+    - USE AN ACCESS AND REFRESH TOKEN
+- session
+    - use cookies
